@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Portofolio Siswa RPL</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f4f9;
+    }
+    header {
+      background: #4CAF50;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      background: #333;
+    }
+    nav button {
+      background: none;
+      border: none;
+      color: white;
+      padding: 14px 20px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    nav button:hover {
+      background: #575757;
+    }
+    section {
+      padding: 20px;
+      display: none;
+    }
+    section.active {
+      display: block;
+    }
+    /* Form Login */
+    #loginForm {
+      display: flex;
+      flex-direction: column;
+      width: 300px;
+      margin: 100px auto;
+      padding: 20px;
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+    }
+    #loginForm input {
+      margin: 10px 0;
+      padding: 10px;
+      font-size: 16px;
+    }
+    #loginForm button {
+      padding: 10px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    #loginForm button:hover {
+      background: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Login Form -->
+  <div id="loginForm">
+    <h2 style="text-align:center;">Login Portofolio</h2>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+    <p id="errorMsg" style="color:red; text-align:center;"></p>
+  </div>
+
+  <!-- Main Content -->
+  <div id="mainContent" style="display:none;">
+    <header>
+      <h1>Portofolio Siswa RPL</h1>
+    </header>
+
+    <nav>
+      <button onclick="showSection('pribadi')">Data Pribadi</button>
+      <button onclick="showSection('tugas')">Tugas-tugas</button>
+      <button onclick="showSection('projek')">Projek</button>
+      <button onclick="showSection('lainnya')">Lainnya</button>
+    </nav>
+
+    <section id="pribadi" class="active">
+      <h2>Data Pribadi</h2>
+      <p>Nama: Muhammad Alfi Masrur Kurnianto</p>
+      <p>Kelas: X RPL</p>
+      <p>Sekolah: SMKN 20 Jakarta</p>
+      <p>Alamat: Jakarta</p>
+    </section>
+
+    <section id="tugas">
+      <h2>Tugas-tugas</h2>
+      <ul>
+        <li>Tugas 1: Membuat halaman HTML</li>
+        <li>Tugas 2: CSS Styling</li>
+        <li>Tugas 3: JavaScript Dasar</li>
+      </ul>
+    </section>
+
+    <section id="projek">
+      <h2>Projek</h2>
+      <ul>
+        <li>Projek 1: Website Portofolio</li>
+        <li>Projek 2: Aplikasi Kasir Sederhana</li>
+      </ul>
+    </section>
+
+    <section id="lainnya">
+      <h2>Lainnya</h2>
+      <p>Hobi: Coding, Gaming, Membaca</p>
+      <p>Cita-cita: Software Engineer</p>
+    </section>
+  </div>
+
+  <script>
+    function login() {
+      let user = document.getElementById("username").value;
+      let pass = document.getElementById("password").value;
+      let errorMsg = document.getElementById("errorMsg");
+
+      if (user === "Alf" && pass === "saya alfi 135") {
+        document.getElementById("loginForm").style.display = "none";
+        document.getElementById("mainContent").style.display = "block";
+      } else {
+        errorMsg.innerText = "Username atau Password salah!";
+      }
+    }
+
+    function showSection(id) {
+      let sections = document.querySelectorAll("section");
+      sections.forEach(sec => sec.classList.remove("active"));
+      document.getElementById(id).classList.add("active");
+    }
+  </script>
+
+</body>
+</html>
